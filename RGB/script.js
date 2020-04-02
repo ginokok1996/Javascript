@@ -1,10 +1,18 @@
-var colors = [];
+var colors = [
+  "rgb(255, 0, 0)",
+  "rgb(255, 255, 0)",
+  "rgb(0, 255, 0)",
+  "rgb(0, 255, 255)",
+  "rgb(0, 0, 255)",
+  "rgb(255, 0, 255)"
+];
 var squares = document.getElementsByClassName("square");
+
 var score = 0;
 
 generateColors(colors);
 
-//allocates a random color from the array to neededColor (has to be done after colors are generated)
+//allocates a random color from the array to neededColor
 var neededColor = colors[Math.floor(Math.random() * 6)];
 
 addColors();
