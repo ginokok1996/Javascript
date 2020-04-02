@@ -7,12 +7,11 @@ var colors = [
   "rgb(255, 0, 255)"
 ];
 var squares = document.getElementsByClassName("square");
-
 var score = 0;
 
 generateColors(colors);
 
-//allocates a random color from the array to neededColor
+//allocates random color from array to neededColor (Must be done after generateColors()!!)
 var neededColor = colors[Math.floor(Math.random() * 6)];
 
 addColors();
@@ -66,18 +65,17 @@ function checkColor(id) {
   var condition = document.getElementById("condition");
   console.log("clicked" + clickedColor);
   console.log("needed" + neededColor);
-  if (hasWon == false) {
-    if (clickedColor == neededColor) {
-      condition.innerHTML = "Correct!";
-      score++;
-      document.body.style.backgroundColor = neededColor;
-      resetAll();
-    } else {
-      condition.innerHTML = "Fout!";
-      score = 0;
-      document.body.style.backgroundColor = "#232323";
-      resetAll();
-    }
+
+  if (clickedColor == neededColor) {
+    condition.innerHTML = "Correct!";
+    score++;
+    document.body.style.backgroundColor = neededColor;
+    resetAll();
+  } else {
+    condition.innerHTML = "Fout!";
+    score = 0;
+    document.body.style.backgroundColor = "#232323";
+    resetAll();
   }
 }
 
