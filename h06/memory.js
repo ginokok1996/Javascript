@@ -172,6 +172,7 @@ function chooseWinner() {
   button.style.visibility = "visible";
 }
 
+//preload pictures for smoother loading of pictures
 function preload() {
   for (i = 0; i < preload.arguments.length; i++) {
     images[i] = new Image();
