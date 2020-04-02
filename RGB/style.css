@@ -1,0 +1,32 @@
+body {
+  background-color: #232323;
+  font-family: "Nunito", sans-serif;
+}
+
+#container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#scorecontainer {
+  border: 1px solid white;
+  width: 160px;
+  color: white;
+  padding: 20px;
+  font-size: 2em;
+  border-radius: 40px;
+}
+
+.square {
+  width: 29%;
+  background-color: purple;
+  padding-bottom: 30%;
+  float: left;
+  margin: 1.66%;
+  border: 2px solid black;
+  border-radius: 40px;
+}
+
+h1 {
+  color: white;
+}
