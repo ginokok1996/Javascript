@@ -8,6 +8,7 @@ var colors = [
 ];
 var squares = document.getElementsByClassName("square");
 var score = 0;
+var lifes = 3;
 
 generateColors(colors);
 
@@ -17,6 +18,7 @@ var neededColor = colors[Math.floor(Math.random() * 6)];
 addColors();
 showNeededColor();
 showScore();
+showLifes();
 
 //generates random colors and fills the array with them
 function generateColors(array) {
@@ -58,6 +60,17 @@ function showNeededColor() {
   color.innerHTML = "Choose the color: " + neededColor;
 }
 
+//shows and updates the score
+function showScore() {
+  scoreHolder = document.getElementById("score");
+  scoreHolder.innerHTML = score;
+}
+
+function showLifes() {
+  lifesHolder = document.getElementById("lifes");
+  lifesHolder.innerHTML = lifes;
+}
+
 //check if the colors are a match
 function checkColor(id) {
   var color = document.getElementById(id);
@@ -73,23 +86,22 @@ function checkColor(id) {
     resetAll();
   } else {
     condition.innerHTML = "Fout!";
-    score = 0;
+    lifes -= 1;
     document.body.style.backgroundColor = "#232323";
     resetAll();
   }
 }
 
-//shows and updates the score
-function showScore() {
-  scoreHolder = document.getElementById("score");
-  scoreHolder.innerHTML = score;
-}
-
 //resets the board
 function resetAll() {
+  if (lifes == 0) {
+    lifes = 3;
+    score = 0;
+  }
   generateColors(colors);
   neededColor = colors[Math.floor(Math.random() * 6)];
   changeColors();
   showNeededColor();
   showScore();
+  showLifes();
 }
