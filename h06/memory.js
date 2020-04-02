@@ -10,10 +10,23 @@ var player2 = "Speler 2";
 var pointsPlayer1 = 0;
 var pointsPlayer2 = 0;
 var winner = null;
+var images = [];
 
 shuffleArray(teller);
 activePlayer();
 score();
+
+preload(
+  "img/foto1.jpg",
+  "img/foto2.jpg",
+  "img/foto3.jpg",
+  "img/foto4.jpg",
+  "img/foto5.jpg",
+  "img/foto6.jpg",
+  "img/foto7.jpg",
+  "img/foto8.jpg",
+  "img/foto9.jpg"
+);
 
 //shuffles the array to be random
 function shuffleArray(array) {
@@ -157,4 +170,11 @@ function chooseWinner() {
 
   button.removeEventListener("click", nextButton);
   button.style.visibility = "visible";
+}
+
+function preload() {
+  for (i = 0; i < preload.arguments.length; i++) {
+    images[i] = new Image();
+    images[i].src = preload.arguments[i];
+  }
 }
