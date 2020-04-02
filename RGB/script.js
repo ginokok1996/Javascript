@@ -1,23 +1,17 @@
-var colors = [
-  "rgb(255, 0, 0)",
-  "rgb(255, 255, 0)",
-  "rgb(0, 255, 0)",
-  "rgb(0, 255, 255)",
-  "rgb(0, 0, 255)",
-  "rgb(255, 0, 255)"
-];
+var colors = [];
 var squares = document.getElementsByClassName("square");
-var hasWon = false;
 var score = 0;
 
 generateColors(colors);
 
+//allocates a random color from the array to neededColor (has to be done after colors are generated)
 var neededColor = colors[Math.floor(Math.random() * 6)];
+
 addColors();
 showNeededColor();
 showScore();
 
-//generates random colors and fills the divs with them
+//generates random colors and fills the array with them
 function generateColors(array) {
   var random1 = Math.floor(Math.random() * 255 + 1);
   var random2 = Math.floor(Math.random() * 255 + 1);
@@ -31,6 +25,7 @@ function generateColors(array) {
   }
 }
 
+//adds the colors and event listeners to the squares
 function addColors() {
   for (var i = 0; i < squares.length; i++) {
     squares[i].style.backgroundColor = colors[i];
@@ -41,6 +36,8 @@ function addColors() {
     });
   }
 }
+
+//gives new random colors
 function changeColors() {
   for (var i = 0; i < squares.length; i++) {
     squares[i].style.backgroundColor = colors[i];
@@ -48,11 +45,13 @@ function changeColors() {
   }
 }
 
+//shows and updated the color you need to click
 function showNeededColor() {
   var color = document.getElementById("neededcolor");
   color.innerHTML = "Choose the color: " + neededColor;
 }
 
+//check if the colors are a match
 function checkColor(id) {
   var color = document.getElementById(id);
   var clickedColor = color.style.backgroundColor;
