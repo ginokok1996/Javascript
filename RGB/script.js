@@ -7,8 +7,11 @@ var colors = [
   "rgb(255, 0, 255)"
 ];
 var squares = document.getElementsByClassName("square");
+var condition = document.getElementById("condition");
+var gameover = document.getElementById("gameover");
 var score = 0;
 var lifes = 3;
+var lostGame = false;
 
 generateColors(colors);
 
@@ -22,15 +25,15 @@ showLifes();
 
 //generates random colors and fills the array with them
 function generateColors(array) {
-  var random1 = Math.floor(Math.random() * 255 + 1);
-  var random2 = Math.floor(Math.random() * 255 + 1);
-  var random3 = Math.floor(Math.random() * 255 + 1);
+  var r = Math.floor(Math.random() * 256);
+  var g = Math.floor(Math.random() * 256);
+  var b = Math.floor(Math.random() * 256);
 
   for (var i = 0; i < colors.length; i++) {
-    array[i] = "rgb(" + random1 + ", " + random2 + ", " + random3 + ")";
-    random1 = Math.floor(Math.random() * 255 + 1);
-    random2 = Math.floor(Math.random() * 255 + 1);
-    random3 = Math.floor(Math.random() * 255 + 1);
+    array[i] = "rgb(" + r + ", " + g + ", " + b + ")";
+    r = Math.floor(Math.random() * 256);
+    g = Math.floor(Math.random() * 256);
+    b = Math.floor(Math.random() * 256);
   }
 }
 
@@ -75,33 +78,53 @@ function showLifes() {
 function checkColor(id) {
   var color = document.getElementById(id);
   var clickedColor = color.style.backgroundColor;
-  var condition = document.getElementById("condition");
   console.log("clicked" + clickedColor);
   console.log("needed" + neededColor);
 
-  if (clickedColor == neededColor) {
-    condition.innerHTML = "Correct!";
-    score++;
-    document.body.style.backgroundColor = neededColor;
-    resetAll();
-  } else {
-    condition.innerHTML = "Fout!";
-    lifes -= 1;
-    document.body.style.backgroundColor = "#232323";
-    resetAll();
+  if (lostGame == false) {
+    if (clickedColor == neededColor) {
+      condition.innerHTML = "Correct!";
+      score++;
+      document.body.style.backgroundColor = neededColor;
+      resetAll();
+    } else {
+      condition.innerHTML = "Wrong!";
+      lifes -= 1;
+      document.body.style.backgroundColor = "#232323";
+      resetAll();
+    }
   }
 }
 
 //resets the board
 function resetAll() {
   if (lifes == 0) {
-    lifes = 3;
-    score = 0;
+    endScreen();
+  } else {
+    generateColors(colors);
+    neededColor = colors[Math.floor(Math.random() * 6)];
+    changeColors();
+    showNeededColor();
+    showScore();
+    showLifes();
   }
-  generateColors(colors);
-  neededColor = colors[Math.floor(Math.random() * 6)];
-  changeColors();
-  showNeededColor();
-  showScore();
+}
+
+function endScreen() {
+  var text = "Your score is: " + score + "! Click here to play again";
+  lifes = 0;
+  lostGame = true;
   showLifes();
+  condition.innerHTML = "";
+  gameover.innerHTML = text;
+  gameover.style.visibility = "visible";
+  gameover.addEventListener("click", gameOver);
+}
+
+function gameOver() {
+  lifes = 3;
+  score = 0;
+  gameover.style.visibility = "hidden";
+  lostGame = false;
+  resetAll();
 }
