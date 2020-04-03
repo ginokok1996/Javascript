@@ -117,14 +117,14 @@ function endScreen() {
   showLifes();
   condition.innerHTML = "";
   gameover.innerHTML = text;
-  gameover.style.visibility = "visible";
+  gameover.style.display = "block";
   gameover.addEventListener("click", gameOver);
 }
 
 function gameOver() {
   lifes = 3;
   score = 0;
-  gameover.style.visibility = "hidden";
+  gameover.style.display = "none";
   lostGame = false;
   resetAll();
 }

@@ -6,6 +6,7 @@ body {
 
 h1 {
   color: white;
+  font-size: 1.5em;
 }
 
 a {
@@ -27,20 +28,22 @@ span {
 }
 
 #scorecontainer {
+  text-align: center;
   border: 1px solid white;
   width: 160px;
   color: white;
   padding: 20px;
-  font-size: 2em;
+  font-size: 1.5em;
   border-radius: 40px;
 }
 
 #lifescontainer {
+  text-align: center;
   border: 1px solid white;
   width: 160px;
   color: white;
   padding: 20px;
-  font-size: 2em;
+  font-size: 1.5em;
   border-radius: 40px;
 }
 
@@ -50,7 +53,8 @@ span {
 }
 
 #gameover {
-  visibility: hidden;
+  display: none;
+  text-align: center;
   border: 1px solid white;
   width: 430px;
   color: white;
