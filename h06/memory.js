@@ -94,6 +94,7 @@ function nextButton() {
   button = document.getElementById("nextbutton");
   button.style.visibility = "hidden";
   turns = 0;
+  blockClicked = null;
   wait = false;
 
   //sets pictures back to white
