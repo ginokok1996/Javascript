@@ -1,0 +1,27 @@
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: whitesmoke;
+}
+
+.fieldcontainer {
+  padding: 10px;
+}
+
+.fieldtext {
+  margin-right: 15px;
+}
+
+.valuetext {
+  margin-right: 25px;
+}
+
+#table {
+  padding-top: 15px;
+  padding-left: 9px;
+  padding-bottom: 15px;
+}
+
+#showinsert {
+  padding-top: 50px;
+  visibility: hidden;
+}
