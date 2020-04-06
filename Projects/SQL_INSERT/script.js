@@ -27,7 +27,7 @@ function generateInsert() {
       line2.push(a[i]);
     }
 
-    if (b[i] == "") {
+    if (a[i] == "" && b[i] == "") {
     } else {
       line3.push('"' + b[i] + '"');
     }
